@@ -11,6 +11,4 @@ children:
   - title: divider
   - title: blog
     permalink: /blog/
-  - title: teaching
-    permalink: /teaching/
 ---

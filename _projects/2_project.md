@@ -8,6 +8,7 @@ category: work
 pseudocode: true
 ---
 
+
 There are many tutorials, courses, videos, books, and other resources about programming or coding. Most of them start with the basics and provide little snippets of code but often leave out deeper knowledge and professional-level concepts. This first introduction will guide you through a lesson on creating a complete program, where good coding practices will also be included to make it much more comprehensive.
 
 In the world of computer programming, there are two main ways that programs are turned into something your computer can understand: compiled and interpreted languages.
@@ -95,13 +96,13 @@ Here’s a step-by-step guide to installing Python and Visual Studio Code (VS Co
    - Open a folder where you plan to write Python code by selecting **File > Open Folder**.
    - Once you select the folder, this will become the program's "PATH" and where all the files need to be saved from now on.
 
-### 2. **Project Overview**
+## 2. **Project Overview**
 
 This project will work with sheets from an OpenDocument file, which is similar to an Excel file (".xlsx" extension) from Microsoft Office. The goal is to convert all the data in a sheet to a JSON file. JSON files are widely used by coders and programmers, so learning how to work with them is highly recommended.
 
 We will also learn about modularity, error handling, using libraries in Python, and how to structure code effectively.
 
-### 3. **Create an environment**
+## 3. **Create an environment**
 
 Berore starting a new project with python, although this is common in modern standards in any language, make sure to isolate it from the main python installation by creating an environment. To achive this, follow the next steps:
 
@@ -134,11 +135,11 @@ Berore starting a new project with python, although this is common in modern sta
 > On windows, you could also see in the terminal the name_environment twice after following the steps for creating an environment.
 > {: .block-warning}
 
-### 4. **Structuring the code**
+## 4. **Structuring the code**
 
 First of all, I consider important to start by structuring code to make maintenance, reuse, and debugging easier. Also the importance to think in pseudocode. This means: think how to solve a problem without considering the programming language. As the name implies, it is not actual code so it can be written in plain text. This will keep the ideas organized and will be a starting point for any language.
 
-#### 4.1 **Pseudocode**
+### 4.1 **Pseudocode**
 
 ```pseudocode
 % Pseudocode for ods to json
@@ -149,8 +150,8 @@ First of all, I consider important to start by structuring code to make maintena
 \OUTPUT $$JSON\_file$$
 \PROCEDURE{ODS2JSON}{}
     \STATE CALL{read ods file}{$$ ods\_file $$}
-    \STATE CALL{transcribe data to JSON format}{$$ods\_file$$}
-    \STATE CALL{save JSON file}{ $$ods\_file$$ }
+    \STATE CALL{get_sheet_data}{$$ ods\_file $$}
+    \STATE CALL{save JSON file}{ $$ ods\_file $$ }
 \ENDPROCEDURE
 \end{algorithmic}
 \end{algorithm}
@@ -158,7 +159,7 @@ First of all, I consider important to start by structuring code to make maintena
 
 This serves as a map or recipe to start coding.
 
-#### 4.2 **Program structure**
+### 4.2 **Program structure**
 
 Next is creating the file structure. A suggestion is to have a file for functions, another for configurationm one main and a readme.
 
@@ -167,7 +168,7 @@ Next is creating the file structure. A suggestion is to have a file for function
 - Main: I consider it the logic or the path the program follows when calling the functions. This one should contain all our libraries/packages/frameworks we created as well the config file. Another way to put it, Main is a pot where all the files we created are put in. As such, all other files should not import anything we created since Main will be the place where all our work is reunited.
 - Readme: Contains our programs's "how to" and info. Those can be the installation, requirements, changes, updates, contact and general explanation.
 
-##### 4.2.1 **Create the files**
+#### 4.2.1 **Create the files**
 
 1. Inside VS Code, Open the Command Palette by Pressing Ctrl + Shift + P.
 2. In the Command Palette, type >New Folder and select the "Files: New Folder" option. In the Explorer view on the left sidebar, you’ll see a prompt to name your folder. Type a name, in this example will be code, and press Enter. This will create a folder named what you typed,
@@ -177,21 +178,26 @@ Next is creating the file structure. A suggestion is to have a file for function
 6. Repeat the process to create the next files: "functions.py", "readme.md" and "config.json"
 7. Check the Explorer view to ensure that all four files are listed inside the code folder.
 
-### 5. **Coding**
+## 5. **Coding**
 
-Finally is time to add some actual code. Start by opening the "functions.py" file. The first to do is importing libraries. A library in Python is a collection of pre-written code that you can use to perform common tasks, saving you the effort of writing the code yourself. Libraries contain modules, which are files of Python code that define functions, classes, and variables. By using libraries, you can extend the functionality of your programs without reinventing the wheel. As such, we won't be doing a code to read an ods file, instead we are going to use a library to get the data we want. To do this, all you need to do is add the next line.
+Finally is time to add some actual code. Start by opening the "functions.py" file. The first to do is importing libraries. A library in Python is a collection of pre-written code that you can use to perform common tasks, saving you the effort of writing the code yourself. Libraries contain modules, which are files of Python code that define functions, classes, and variables. By using libraries, you can extend the functionality of your programs without reinventing the wheel. As such, we won't be doing a code to read an ods file, instead we are going to use a library to get the data we want. To do this, all you need to do is add the next.
 
+
+### 5.1 **Importing**
 ```python
+import sys
+import json
 from pyexcel_ods import get_data
+from typing import List, Dict, Any
 ```
 
-However is very likely you get an error indicating the library cannot be found. This is because this is an external or third party library, therefore is not out of the box whenever Python is installed. Fortunately is very easy to install. All you need to do is go back to the terminal and type the next line:
+However is very likely you get an error indicating the library pyexcel_ods cannot be found. This is because this is an external or third party library, therefore is not out of the box whenever Python is installed. Fortunately is very easy to install. All you need to do is go back to the terminal and type the next line:
 
 ```cmd
 pip install pyexcel-ods
 ```
 
-pip is also a library, which connects to the web to download another library, in the example above is called pyexcel-ods. Python too many libraries, some which are being tracked and stored in the [official repository](https://pypi.org). As such, [pyexcel-ods is found in said repository](https://pypi.org/project/pyexcel-ods/).
+pip is also a library, which connects to the web to download another library, in the example above is called pyexcel-ods. Python has too many libraries, some which are being tracked and stored in the [official repository](https://pypi.org). As such, [pyexcel-ods is found in said repository](https://pypi.org/project/pyexcel-ods/). 
 
 > ##### WARNING
 >
@@ -209,3 +215,80 @@ pip show <package_name>
 ```
 
 The first lists all the packages you have installed in your current environment. While the second one gives a more detailed info about the package in case it is installed.
+
+## 5.2 **Functions**
+Onto the three functions: read_ods_file, get_sheet_data, save_JSON_file.
+
+### 5.2.1 **read_ods_file**
+The first function uses the function get_data from pyexcel_ods, said function is very complete and there is no need to add anything else. However any professional developer understands how error handling is important. Therefore this function will check for cases where the file is either not found or couldn't be read. It also will include comments to help developers understand the code:
+
+```python
+def read_ods_file(ods_file: str) -> Dict[str, List[List[Any]]]:
+    """
+    Reads an ODS file and returns its data.
+    Args:
+    ods_file (str): ODS file path.
+    Returns:
+    Dict[str, List[List[Any]]]: A dictionary with all the data.
+    """
+    try:
+        return get_data(ods_file)
+    except FileNotFoundError:
+        print(f"Error: File couldn't be found '{ods_file}'")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error while reading file: {str(e)}")
+        sys.exit(1)
+```
+
+As shown in the comments recieves the path where the file is stored in the computer and returns a data structure form the typing library. Next we pass the data from the number sheet we want to work with.
+
+### 5.2.2 **get_sheet_data**
+Once again, libraries reduce the amount of work. Also don't forget to add error handling as well comments for developers, making the code as next:
+
+```python
+def get_sheet_data(data: Dict[str, List[List[Any]]], sheet_number: int) -> List[List[Any]]:
+    """
+    Gets data from sheet number.
+    Args:
+    data (Dict[str, List[List[Any]]]): data from ODS file.
+    sheet_number (int): Sheet number (Starting from 1).
+    Returns:
+    List[List[Any]]: data from sheet
+    """
+    try:
+        sheet_number = list(data.keys())[sheet_number - 1]
+        return data[sheet_number]
+    except IndexError:
+        print(f"Error: Sheet number doesn't exist {sheet_number}")
+        sys.exit(1)
+```
+
+### 5.2.3 **save_JSON_file**
+
+Finally the function to store everything in a file. In python the reserved word "with" along function open is used to store files. It is important to mention nowadays with globalization, using the encoding for utf-8 should be default. However this is not standard practice, every file should be considered to use special characters, no professional coder nowadays should left files without working with non-standard characters (roman alphabet). 
+
+```python
+def save_JSON_file(table: List[List[Any]], JSON_file: str):
+    """
+    Saves data in JSON file.
+    Args:
+    table (List[List[Any]]): Table with data.
+    JSON_file (str): Path and file name for JSON.
+    """
+    if not table:
+        print("Error: Empty table")
+        return
+    headings = table[0]
+    data = []
+    for row in table[1:]:
+        datum = {heading: value for heading, value in zip(headings, row)}
+        data.append(datum)
+    try:
+        with open(JSON_file, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+        print(f"Data saved successfuly in: {JSON_file}")
+    except Exception as e:
+        print(f"Error while saving: {str(e)}")
+```
+
