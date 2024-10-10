@@ -127,11 +127,11 @@ Berore starting a new project with python, although this is common in modern sta
 
 6. After activation, you should see (name_environment) at the beginning of your terminal prompt, indicating that the environment is active.
 7. In the Command Palette (press Ctrl + Shift + P), type >Python: Select Interpreter
-8. Choose the interpreter from your virtual environment. It should look something like .name_environment\Scripts\python.exe
+8. Choose the interpreter from your virtual environment. It should look something like **.name_environment\Scripts\python.exe**
 
 > ##### WARNING
 >
-> On windows, you could also see in the terminal the name_environment twice after following the steps for creating an environment.
+> On windows, you could also see in the terminal the <name_environment> twice after following the steps for creating an environment.
 > {: .block-warning}
 
 ## 4. **Structuring the code**
@@ -148,9 +148,9 @@ First of all, I consider important to start by structuring code to make maintena
 \INPUT $$ods\_file, sheet\_number, json\_file\_path$$
 \OUTPUT $$JSON\_file$$
 \PROCEDURE{ODS2JSON}{}
-    \STATE CALL{read ods file}{$$ ods\_file $$}
-    \STATE CALL{get_sheet_data}{$$ ods\_file $$}
-    \STATE CALL{save JSON file}{ $$ ods\_file $$ }
+    \STATE CALL{read ods file}{}
+    \STATE CALL{get sheet data}{}
+    \STATE CALL{save JSON file}{}
 \ENDPROCEDURE
 \end{algorithmic}
 \end{algorithm}
@@ -170,19 +170,33 @@ Next is creating the file structure. A suggestion is to have a file for function
 #### 4.2.1 **Create the files**
 
 1. Inside VS Code, Open the Command Palette by Pressing Ctrl + Shift + P.
-2. In the Command Palette, type >New Folder and select the "Files: New Folder" option. In the Explorer view on the left sidebar, you’ll see a prompt to name your folder. Type a name, in this example will be code, and press Enter. This will create a folder named what you typed,
+2. In the Command Palette, type >New Folder and select the "Files: New Folder" option. In the Explorer view on the left sidebar, you’ll see a prompt to name your folder. Type a name, in this example will be code, and press Enter.
 3. Double-click on the code folder in the Explorer view to open it.
-4. Right-click inside the code folder in the Explorer view and select "New File".
-5. Name the file, is recommended to be a meaninful one, in this example I start with "main.py".
-6. Repeat the process to create the next files: "functions.py", "readme.md" and "config.json"
-7. Check the Explorer view to ensure that all four files are listed inside the code folder.
+4. Right-click inside the code folder in the Explorer view and select "New Folder" and create one called **src**.
+5. Repeat step 4 to create a folder called **config**.
+6. Right-click inside the **src** folder in the Explorer view and select "New File" and create the next files: **functions.py**, **config_untils.py** and **__init__.py**.
+7. Now select the folder config and inside create a new file called **config.json**.
+8. Go back to the root folder and crete two files: **main.py** and **readme.md**.
+9. Check the Explorer view to ensure that all files and folders are listed inside the code folder.
+
+```
+code/
+    ├── src/
+    │   ├── __init__.py
+    │   ├── functions.py
+    │   └── config_utils.py
+    ├── config/
+    │   └── config.json
+    ├── main.py
+    └── readme.md
+```
 
 ## 5. **Coding**
 
 Finally is time to add some actual code. Start by opening the "functions.py" file. The first to do is importing libraries. A library in Python is a collection of pre-written code that you can use to perform common tasks, saving you the effort of writing the code yourself. Libraries contain modules, which are files of Python code that define functions, classes, and variables. By using libraries, you can extend the functionality of your programs without reinventing the wheel. As such, we won't be doing a code to read an ods file, instead we are going to use a library to get the data we want. To do this, all you need to do is add the next.
 
 
-### 5.1 **Importing**
+### 5.1 **Module importing and installing libraries**
 ```python
 import sys
 import json
@@ -216,7 +230,7 @@ pip show <package_name>
 The first lists all the packages you have installed in your current environment. While the second one gives a more detailed info about the package in case it is installed.
 
 ## 5.2 **Functions**
-Onto the three functions: read_ods_file, get_sheet_data, save_JSON_file.
+Onto the three functions: **read_ods_file, get_sheet_data and save_JSON_file**.
 
 ### 5.2.1 **read_ods_file**
 The first function uses the function get_data from pyexcel_ods, said function is very complete and there is no need to add anything else. However any professional developer understands how error handling is important. Therefore this function will check for cases where the file is either not found or couldn't be read. It also will include comments to help developers understand the code:
@@ -265,7 +279,7 @@ def get_sheet_data(data: Dict[str, List[List[Any]]], sheet_number: int) -> List[
 
 ### 5.2.3 **save_JSON_file**
 
-Finally the function to store everything in a file. In python the reserved word "with" along function open is used to store files. It is important to mention nowadays with globalization, using the encoding for utf-8 should be default. However this is not standard practice, every file should be considered to use special characters, no professional coder nowadays should left files without working with non-standard characters (roman alphabet). 
+Finally the function to store everything in a file. In python the reserved word "**with**" along function **open** is used to store files. It is important to mention nowadays with globalization, using the encoding for utf-8 should be default. However this is not standard practice, every file should be considered to use special characters, no professional coder nowadays should left files without working with non-standard characters (roman alphabet). 
 
 ```python
 def save_JSON_file(table: List[List[Any]], JSON_file: str):
@@ -291,3 +305,93 @@ def save_JSON_file(table: List[List[Any]], JSON_file: str):
         print(f"Error while saving: {str(e)}")
 ```
 
+## 5.3 **Config files and modularity**
+As indicated by pesudocode and the functions, there are three variables used as input. Most of times the tutorials put them into the same file, which can be lead to a mess and more important, can take time to track them down whenever some changes are required. To fix this, use external files to store them.
+
+Now go to config.json and add the next:
+
+```json
+{
+    "ods_file": "<path_to_ods>.ods",
+    "sheet_number": 1,
+    "JSON_file": "<path_json>.json"
+}
+```
+
+In case of confusion, the **"<>"** simbols are used to indicate this part should be replaced, for example, there is a file in the next path: D:/Files/Earnings/2024/June.ods, this means the line should be written as this: **"ods_file": "D:/Files/Earnings/2024/June.ods"**.
+
+### 5.3.1 **Loading json files**
+
+Now it is required to add another function to load a JSON file. In this case add to the **utils_config.py** the next:
+
+```python
+def load_config(config_path: str) -> Dict[str, Any]:
+    """
+    Loads config data from a JSON file
+    Args:
+    config_path (str): path with config data.
+    Returns:
+    Dict[str, Any]: Dictionary with config values.
+    """
+    try:
+        if os.path.exists(config_path):
+            with open(config_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        else:
+            print(f"Config file not found: {config_path}")
+    except json.JSONDecodeError as e:
+        print(f"Error decoding config file: {e}")
+    except Exception as e:
+        print(f"Error while loading config: {e}")
+```
+
+## 5.4 **Main file and final step**
+
+Next is the file where everything is connected to work. This time we will use **main.py** and **__init__.py**. The last one is required to tell Python this directory is a package, and can be empty, however to make it modular, it requires to add some lines:
+
+```python
+from .ods2json import read_ods_file, get_sheet_data, save_JSON_file
+from .utils_config import load_config
+
+__all__ = [
+    'read_ods_file',
+    'get_sheet_data',
+    'save_JSON_file',
+    'load_config'
+]
+```
+
+Finally the main file will use import the package we created by using the append method included in **sys** and call all the created functions:
+
+```python
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+
+def main():
+    config_path = os.path.join(os.path.dirname(__file__), 'config', 'config.json')
+    config = load_config(config_path)
+    data = read_ods_file(config["file_path"])
+    table = get_sheet_data(data, config["sheet_index"])
+    save_JSON_file(table, config["output_file"])
+
+if __name__ == "__main__":
+    main()
+```
+
+As can be seen, the main file is very similar to the pseudocode where, except by the config. Also at the end where the if __name__ line is used to run everything inside the block whenever this particular file is called. In this case we simplified it by calling the main function.
+
+# 6 **Ending and summary**
+
+WIth this your first code has been finished with a more professional approach. To run the code in VS code, it is possible to do it by opening the main file and clicking in the play button located at the top-right side. To summarize the lesson, this lesson went through the next steps.
+
+1. Install the interpreter and IDE.
+2. Think how to structure code.
+3. Create an environment to isolate project.
+4. Install and import libraries.
+5. Create our own library by using __init__ and structure
+6. Comment our code to help developers
+7. Error handling
+
+The project can be improved and expanded with other elements like throwing errors, adding requirments and modifying names to personalize it and create your own package, and add more functions depending on your own needs.
