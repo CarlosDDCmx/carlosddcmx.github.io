@@ -4,7 +4,7 @@ title: Glossary
 description: Definitions
 img: assets/img/12.jpg
 importance: 1
-category: concepts
+category: [coding, concepts]
 related_publications: true
 ---
 

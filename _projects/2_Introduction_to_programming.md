@@ -4,7 +4,7 @@ title: Introduction to programming
 description: Tutorial 1
 img: assets/img/Lección1.jpg
 importance: 1
-category: code
+category: [coding]
 pseudocode: true
 ---
 
@@ -233,7 +233,7 @@ The first lists all the packages you have installed in your current environment.
 Onto the three functions: **read_ods_file, get_sheet_data and save_JSON_file**.
 
 ### 5.2.1 **read_ods_file**
-The first function uses the function get_data from pyexcel_ods, said function is very complete and there is no need to add anything else. However any professional developer understands how error handling is important. Therefore this function will check for cases where the file is either not found or couldn't be read. It also will include comments to help developers understand the code:
+The first function uses the function get_data from pyexcel_ods, said function is very complete and there is no need to add anything else. However any professional developer understands how error handling is important. Therefore this function will check for cases where the file is either not found or couldn't be read. Include comments to help developers understand the code:
 
 ```python
 def read_ods_file(ods_file: str) -> Dict[str, List[List[Any]]]:
@@ -254,7 +254,7 @@ def read_ods_file(ods_file: str) -> Dict[str, List[List[Any]]]:
         sys.exit(1)
 ```
 
-As shown in the comments recieves the path where the file is stored in the computer and returns a data structure form the typing library. Next we pass the data from the number sheet we want to work with.
+As shown in the comments recieves the path where the file is stored in the computer and returns a data structure from the typing library. Next we pass the data from the number sheet we want to work with.
 
 ### 5.2.2 **get_sheet_data**
 Once again, libraries reduce the amount of work. Also don't forget to add error handling as well comments for developers, making the code as next:
@@ -279,7 +279,7 @@ def get_sheet_data(data: Dict[str, List[List[Any]]], sheet_number: int) -> List[
 
 ### 5.2.3 **save_JSON_file**
 
-Finally the function to store everything in a file. In python the reserved word "**with**" along function **open** is used to store files. It is important to mention nowadays with globalization, using the encoding for utf-8 should be default. However this is not standard practice, every file should be considered to use special characters, no professional coder nowadays should left files without working with non-standard characters (roman alphabet). 
+Finally, the function to store everything in a file. In Python, the reserved word "with", along with the open function, is used to handle files. It's important to mention that, in today's globalized world, using UTF-8 encoding should be the default. However, this is not yet a universal standard, and every file should be prepared to handle special characters. No professional coder should leave files without considering non-standard characters.
 
 ```python
 def save_JSON_file(table: List[List[Any]], JSON_file: str):
@@ -308,7 +308,7 @@ def save_JSON_file(table: List[List[Any]], JSON_file: str):
 ## 5.3 **Config files and modularity**
 As indicated by pesudocode and the functions, there are three variables used as input. Most of times the tutorials put them into the same file, which can be lead to a mess and more important, can take time to track them down whenever some changes are required. To fix this, use external files to store them.
 
-Now go to config.json and add the next:
+Now go to config.json and add this:
 
 ```json
 {
@@ -361,7 +361,7 @@ __all__ = [
 ]
 ```
 
-Finally the main file will use import the package we created by using the append method included in **sys** and call all the created functions:
+Finally the main file will import the package we created by using the append method included in **sys** and call all the created functions:
 
 ```python
 import sys
@@ -380,11 +380,13 @@ if __name__ == "__main__":
     main()
 ```
 
-As can be seen, the main file is very similar to the pseudocode where, except by the config. Also at the end where the if __name__ line is used to run everything inside the block whenever this particular file is called. In this case we simplified it by calling the main function.
+As can be seen, the main file closely follows the pseudocode, except for the configuration. At the end of the file, the line if __name__ == "__main__": is used to run everything inside the block whenever this specific file is executed. In this case, we simplified the execution by directly calling the main function.
 
 # 6 **Ending and summary**
 
-WIth this your first code has been finished with a more professional approach. To run the code in VS code, it is possible to do it by opening the main file and clicking in the play button located at the top-right side. To summarize the lesson, this lesson went through the next steps.
+The first code project has been completed with a more professional approach. To run the code in Visual Studio Code, you can open the main file and click the play button located at the top-right corner.
+
+To summarize, this lesson covered the following steps:
 
 1. Install the interpreter and IDE.
 2. Think how to structure code.
@@ -394,4 +396,6 @@ WIth this your first code has been finished with a more professional approach. T
 6. Comment our code to help developers
 7. Error handling
 
-The project can be improved and expanded with other elements like throwing errors, adding requirments and modifying names to personalize it and create your own package, and add more functions depending on your own needs.
+The project can be improved and expanded with additional features, such as error handling with throws, logging, adding a requirements.txt file, and customizing names to create your own package. You can also add more functions depending on your specific needs.
+
+There are some concepts in this tutorial can be expanded: reserved keywords, data types, code operators and decision statements. Those will be expanded further in later lessons.
