@@ -318,7 +318,7 @@ Now go to config.json and add this:
 }
 ```
 
-In case of confusion, the **"<>"** simbols are used to indicate this part should be replaced, for example, there is a file in the next path: D:/Files/Earnings/2024/June.ods, this means the line should be written as this: **"ods_file": "D:/Files/Earnings/2024/June.ods"**.
+In case of confusion, the **"<>"** simbols are used to indicate this part should be replaced, for example, there is a file in the next path: D:/Files/Balance Sheet/2024/June.ods, this means the line should be written as this: **"ods_file": "D:/Files/Balance Sheet/2024/June.ods"**.
 
 ### 5.3.1 **Loading json files**
 

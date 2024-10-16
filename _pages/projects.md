@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
+title: tutorials
 permalink: /projects/
-description: My projects.
+description: Coding tutorials and lessons
 nav: true
 nav_order: 3
 display_categories: [coding]
