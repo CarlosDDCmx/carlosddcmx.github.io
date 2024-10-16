@@ -322,7 +322,7 @@ In case of confusion, the **"<>"** simbols are used to indicate this part should
 
 ### 5.3.1 **Loading json files**
 
-Now it is required to add another function to load a JSON file. In this case add to the **utils_config.py** the next:
+Now it is required to add another function to load a JSON file. In this case add to the **config_utils.py** the next:
 
 ```python
 def load_config(config_path: str) -> Dict[str, Any]:
@@ -350,8 +350,8 @@ def load_config(config_path: str) -> Dict[str, Any]:
 Next is the file where everything is connected to work. This time we will use **main.py** and **__init__.py**. The last one is required to tell Python this directory is a package, and can be empty, however to make it modular, it requires to add some lines:
 
 ```python
-from .ods2json import read_ods_file, get_sheet_data, save_JSON_file
-from .utils_config import load_config
+from .functions import read_ods_file, get_sheet_data, save_JSON_file
+from .config_utils import load_config
 
 __all__ = [
     'read_ods_file',
@@ -372,9 +372,9 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 def main():
     config_path = os.path.join(os.path.dirname(__file__), 'config', 'config.json')
     config = load_config(config_path)
-    data = read_ods_file(config["file_path"])
-    table = get_sheet_data(data, config["sheet_index"])
-    save_JSON_file(table, config["output_file"])
+    data = read_ods_file(config["ods_file"])
+    table = get_sheet_data(data, config["sheet_number"])
+    save_JSON_file(table, config["JSON_file"])
 
 if __name__ == "__main__":
     main()
