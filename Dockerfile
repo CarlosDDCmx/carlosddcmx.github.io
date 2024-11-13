@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM ruby:slim
+=======
+FROM ruby:latest
+>>>>>>> 15a8288c (Initial commit)
 
 # uncomment these if you are having this issue with the build:
 # /usr/local/bundle/gems/jekyll-4.3.4/lib/jekyll/site.rb:509:in `initialize': Permission denied @ rb_sysopen - /srv/jekyll/.jekyll-cache/.gitignore (Errno::EACCES)
@@ -24,7 +28,10 @@ RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
         build-essential \
         curl \
+<<<<<<< HEAD
         git \
+=======
+>>>>>>> 15a8288c (Initial commit)
         imagemagick \
         inotify-tools \
         locales \

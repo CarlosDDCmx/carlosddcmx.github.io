@@ -129,6 +129,7 @@ If you keep your site on another branch, open `.github/workflows/deploy.yml` **o
 
 If you need to manually re-deploy your website to GitHub pages, go to Actions, click "Deploy" in the left sidebar, then "Run workflow."
 
+<<<<<<< HEAD
 ### Deploy on [Netlify](https://www.netlify.com/)
 
 1. [Use this template -> Create a new repository](https://github.com/new?template_name=al-folio&template_owner=alshedivat).
@@ -149,6 +150,8 @@ If you need to manually re-deploy your website to GitHub pages, go to Actions, c
 
 5. Netlify: Click **Deploy** and wait for the site to be published. If you want to use your own domain name, follow the steps in [this documentation](https://docs.netlify.com/domains-https/custom-domains/).
 
+=======
+>>>>>>> 15a8288c (Initial commit)
 ### Deployment to another hosting server (non GitHub Pages)
 
 If you decide to not use GitHub Pages and host your page elsewhere, simply run:
@@ -210,7 +213,11 @@ If you installed **al-folio** as described above, you can manually update your c
 # Assuming the current directory is <your-repo-name>
 $ git remote add upstream https://github.com/alshedivat/al-folio.git
 $ git fetch upstream
+<<<<<<< HEAD
 $ git rebase v0.13.4
+=======
+$ git rebase v0.11.0
+>>>>>>> 15a8288c (Initial commit)
 ```
 
 If you have extensively customized a previous version, it might be trickier to upgrade.
