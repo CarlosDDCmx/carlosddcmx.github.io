@@ -41,11 +41,7 @@ layout: default
     <div class="clearfix">{{ content }}</div>
 
     <!-- News -->
-<<<<<<< HEAD
     {% if page.news and site.announcements and site.announcements.enabled %}
-=======
-    {% if page.news and site.announcements.enabled %}
->>>>>>> 15a8288c (Initial commit)
       <h2>
         <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
       </h2>
@@ -53,11 +49,7 @@ layout: default
     {% endif %}
 
     <!-- Latest posts -->
-<<<<<<< HEAD
     {% if site.latest_posts and site.latest_posts.enabled %}
-=======
-    {% if site.latest_posts.enabled %}
->>>>>>> 15a8288c (Initial commit)
       <h2>
         <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
       </h2>
@@ -81,13 +73,8 @@ layout: default
       </div>
     {% endif %}
 
-<<<<<<< HEAD
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
-=======
-    {% if site.newsletter.enabled and site.footer_fixed %}
-      {% include scripts/newsletter.liquid center=true %}
->>>>>>> 15a8288c (Initial commit)
     {% endif %}
   </article>
 </div>

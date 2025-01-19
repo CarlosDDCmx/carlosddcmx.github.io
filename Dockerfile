@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 FROM ruby:slim
-=======
-FROM ruby:latest
->>>>>>> 15a8288c (Initial commit)
 
 # uncomment these if you are having this issue with the build:
 # /usr/local/bundle/gems/jekyll-4.3.4/lib/jekyll/site.rb:509:in `initialize': Permission denied @ rb_sysopen - /srv/jekyll/.jekyll-cache/.gitignore (Errno::EACCES)
@@ -14,8 +10,8 @@ FROM ruby:latest
 ENV DEBIAN_FRONTEND noninteractive
 
 LABEL authors="Amir Pourmand,George Araújo" \
-      description="Docker image for al-folio academic template" \
-      maintainer="Amir Pourmand"
+    description="Docker image for al-folio academic template" \
+    maintainer="Amir Pourmand"
 
 # uncomment these if you are having this issue with the build:
 # /usr/local/bundle/gems/jekyll-4.3.4/lib/jekyll/site.rb:509:in `initialize': Permission denied @ rb_sysopen - /srv/jekyll/.jekyll-cache/.gitignore (Errno::EACCES)
@@ -26,19 +22,16 @@ LABEL authors="Amir Pourmand,George Araújo" \
 # install system dependencies
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
-        build-essential \
-        curl \
-<<<<<<< HEAD
-        git \
-=======
->>>>>>> 15a8288c (Initial commit)
-        imagemagick \
-        inotify-tools \
-        locales \
-        nodejs \
-        procps \
-        python3-pip \
-        zlib1g-dev && \
+    build-essential \
+    curl \
+    git \
+    imagemagick \
+    inotify-tools \
+    locales \
+    nodejs \
+    procps \
+    python3-pip \
+    zlib1g-dev && \
     pip --no-cache-dir install --upgrade --break-system-packages nbconvert
 
 # clean up
