@@ -1,11 +1,11 @@
 ---
 layout: page
-title: projects
+title: tutorials
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: Coding tutorials and lessons
 nav: true
 nav_order: 3
-display_categories: [work, fun]
+display_categories: [coding]
 horizontal: false
 ---
 

@@ -3,13 +3,13 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: You
-middle_name: R.
-last_name: Name
+first_name: Carlos
+middle_name: D.
+last_name: Díaz C.
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Contact through email
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  My own website.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -87,8 +87,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: Carlos's site # blog_name will be displayed in your blog page
+blog_description: Just a site to add projects and ideas on my own
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -116,19 +116,19 @@ giscus:
   lang: en
 
 # Disqus comments (DEPRECATED)
-disqus_shortname: al-folio # put your disqus shortname
+#disqus_shortname: al-folio # put your disqus shortname
 # https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 # External sources.
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
-  - name: Google Blog
-    posts:
-      - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
-        published_date: 2024-05-14
+#- name: medium.com
+#    rss_url: https://medium.com/@al-folio/feed
+#  - name: Google Blog
+#    posts:
+#      - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
+#        published_date: 2024-05-14
 
 # -----------------------------------------------------------------------------
 # Newsletter
@@ -150,6 +150,9 @@ collections:
     output: true
     permalink: /:collection/:title/
   projects:
+    output: true
+    permalink: /:collection/:title/
+  coding:
     output: true
     permalink: /:collection/:title/
 
@@ -637,12 +640,12 @@ jsonresume:
   - basics
   - work
   - education
-  - publications
+  #- publications
   - projects
-  - volunteer
-  - awards
-  - certificates
+  #- volunteer
+  #- awards
+  #- certificates
   - skills
   - languages
   - interests
-  - references
+  #- references
