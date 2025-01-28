@@ -331,6 +331,6 @@ If following the lessons, the configuartion file also needs to be modified:
 
 Now, whenever you need to save data in a specified format, simply add the corresponding function when calling it in the main function.
 
-This concludes this lesson. With this knowledge, you now have a program that reads an ODS file and stores the data as JSON, CSV, YAML, and/or TOML. However, there are opportunities for improvement.
+This concludes this lesson. With this knowledge, you now have a program that reads an ODS file and stores the data as JSON, CSV, YAML, and/or TOML.
 
-You may encounter some errors when trying to save data in a JSON file. This is likely because the code does not thoroughly check data types or apply data type conversions. As such, figuring out how to fix these issues could serve as a valuable exercise. In future lessons, we will introduce new concepts that may lead to significant changes in the code to reflect these ideas.
+You may encounter some errors when trying to save data in a JSON file. This is likely because the code does not thoroughly check data types or apply data type conversions. As such, figuring out how to fix these issues could serve as an exercise. In future lessons, we will introduce new concepts that may lead to significant changes in the code to reflect these ideas.
