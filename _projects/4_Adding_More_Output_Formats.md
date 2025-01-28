@@ -323,9 +323,9 @@ If following the lessons, the configuartion file also needs to be modified:
     "ods_file": "<path_to_ods>.ods",
     "sheet_number": 1,
     "JSON_file": "<path_json>.json"
-    "CSV_file": "<path_json>.csv"
-    "YAML_file": "<path_json>.yaml"
-    "TOML_file": "<path_json>.toml"
+    "CSV_file": "<path_csv>.csv"
+    "YAML_file": "<path_yaml>.yaml"
+    "TOML_file": "<path_toml>.toml"
 }
 ```
 
