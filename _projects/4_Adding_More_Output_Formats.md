@@ -231,3 +231,106 @@ def save_CSV_file(table: List[List[Any]], CSV_path: str):
     except Exception as e:
         print(f"Error while saving: {e}")
 ```
+
+## 2. YAML
+
+```python
+def save_YAML_file(table: List[List[Any]], YAML_file: str):
+    """
+    Saves data in YAML file.
+    Args:
+    table (List[List[Any]]): Table with data.
+    YAML_file (str): Path and file name for YAML.
+    """
+    if not table:
+        print("Error: Empty table")
+        return
+    headings = table[0]
+    data = []
+    for row in table[1:]:
+        datum = {heading: value for heading, value in zip(headings, row)}
+        data.append(datum)
+    try:
+        with open(YAML_file, 'w', encoding='utf-8') as f:
+            yaml.safe_dump(data, f, allow_unicode=True, sort_keys=False, indent=4)
+        print(f"Data saved successfully in: {YAML_file}")
+    except Exception as e:
+        print(f"Error while saving: {str(e)}")
+```
+
+## 3. TOML
+
+```python
+def save_TOML_file(table: List[List[Any]], TOML_file: str):
+    """
+    Saves data in TOML file.
+    Args:
+    table (List[List[Any]]): Table with data.
+    TOML_file (str): Path and file name for TOML.
+    """
+    if not table:
+        print("Error: Empty table")
+        return
+    
+    headings = table[0]
+    data = {"data": []}  # TOML requires a top-level table
+    for row in table[1:]:
+        datum = {heading: value for heading, value in zip(headings, row)}
+        data["data"].append(datum)
+    try:
+        with open(TOML_file, 'w', encoding='utf-8') as f:
+            toml.dump(data, f)
+        print(f"Data saved successfully in: {TOML_file}")
+    except Exception as e:
+        print(f"Error while saving: {str(e)}")
+```
+
+## 4. Modify importing lines
+Don't forget to add the newly added function when importing:
+
+**main.py**
+```python
+"""
+// Code from previous lessons
+"""
+from functions import read_ods_file, get_sheet_data, save_JSON_file, save_CSV_file, save_YAML_file, save_TOML_file, print_table
+"""
+// Code from previous lessons
+"""
+```
+
+**__init__.py**
+```python
+from .functions import read_ods_file, get_sheet_data, print_table, save_JSON_file, save_CSV_file, save_YAML_file, save_TOML_file
+from .config_utils import load_config
+
+__all__ = [
+    'read_ods_file',
+    'get_sheet_data',
+    'save_JSON_file',
+    'save_CSV_file',
+    'save_YAML_file',
+    'save_TOML_file',
+    'print_table'
+    'load_config'
+]
+```
+
+If following the lessons, the configuartion file also needs to be modified:
+**config.json**
+```python
+{
+    "ods_file": "<path_to_ods>.ods",
+    "sheet_number": 1,
+    "JSON_file": "<path_json>.json"
+    "CSV_file": "<path_json>.csv"
+    "YAML_file": "<path_json>.yaml"
+    "TOML_file": "<path_json>.toml"
+}
+```
+
+Now, whenever you need to save data in a specified format, simply add the corresponding function when calling it in the main function.
+
+This concludes this lesson. With this knowledge, you now have a program that reads an ODS file and stores the data as JSON, CSV, YAML, and/or TOML. However, there are opportunities for improvement.
+
+You may encounter some errors when trying to save data in a JSON file. This is likely because the code does not thoroughly check data types or apply data type conversions. As such, figuring out how to fix these issues could serve as a valuable exercise. In future lessons, we will introduce new concepts that may lead to significant changes in the code to reflect these ideas.

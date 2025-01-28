@@ -279,7 +279,7 @@ def get_sheet_data(data: Dict[str, List[List[Any]]], sheet_number: int) -> List[
 
 ### 5.2.3 **save_JSON_file**
 
-Finally, the function to store everything in a file. In Python, the reserved word "with", along with the open function, is used to handle files. It's important to mention that, in today's globalized world, using UTF-8 encoding should be the default. However, this is not yet a universal standard, and every file should be prepared to handle special characters. No professional coder should leave files without considering non-standard characters.
+Finally, let's discuss the function for storing everything in a file. In Python, the reserved keyword "with," along with the open function, is used to handle files. It’s important to mention that, in today’s globalized world, using UTF-8 encoding should be the default. However, this is not yet a universal standard, and every file should be prepared to handle special characters. No professional coder should leave files without considering non-standard characters.
 
 ```python
 def save_JSON_file(table: List[List[Any]], JSON_file: str):
